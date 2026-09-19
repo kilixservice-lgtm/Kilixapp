@@ -196,164 +196,174 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================
-       IOS WAITLIST
+       2. SUPABASE DOWNLOAD + IOS APP STORE
+    ========================================== */
+
+    const SUPABASE_URL =
+        "https://xsswxjaaqhkbsheeclge.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY =
+        "sb_publishable_4Zq8XdOzwyqElOEd-4tPvQ_70y1weCa";
+
+    const ANDROID_BUCKET = "android-apps";
+    const ANDROID_FILE = "kilix.apk";
+
+    let supabase = null;
+
+    if (
+        window.supabase &&
+        window.supabase.createClient
+    ) {
+        supabase = window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLISHABLE_KEY
+        );
+    }
+
+
+    /* =========================================
+       ANDROID DOWNLOAD
+    ========================================== */
+
+    const androidDownloadButton =
+        document.querySelector(".btn-primary");
+
+    if (androidDownloadButton) {
+
+        androidDownloadButton.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                if (!supabase) {
+
+                    alert(
+                        "تعذر الاتصال بخادم التحميل. حاول مرة أخرى."
+                    );
+
+                    return;
+                }
+
+                const { data } =
+                    supabase.storage
+                        .from(ANDROID_BUCKET)
+                        .getPublicUrl(
+                            ANDROID_FILE,
+                            {
+                                download: "kilix.apk"
+                            }
+                        );
+
+                if (
+                    !data ||
+                    !data.publicUrl
+                ) {
+
+                    alert(
+                        "تعذر تجهيز تحميل التطبيق. حاول مرة أخرى."
+                    );
+
+                    return;
+                }
+
+                window.location.href =
+                    data.publicUrl;
+
+            }
+        );
+
+    }
+
+
+    /* =========================================
+       IOS COMING SOON
     ========================================== */
 
     const iosDownloadButton =
-        document.getElementById(
-            "iosDownloadButton"
-        );
+        document.getElementById("iosDownloadButton");
 
-    const waitlistModal =
-        document.getElementById(
-            "waitlistModal"
-        );
+    const iosComingSoonModal =
+        document.getElementById("iosComingSoonModal");
 
-    const waitlistClose =
-        document.getElementById(
-            "waitlistClose"
-        );
+    const iosComingSoonClose =
+        document.getElementById("iosComingSoonClose");
 
-    const waitlistForm =
-        document.getElementById(
-            "waitlistForm"
-        );
+    function openIosComingSoon() {
 
-    const waitlistSubmit =
-        document.getElementById(
-            "waitlistSubmit"
-        );
-
-    const waitlistStatus =
-        document.getElementById(
-            "waitlistStatus"
-        );
-
-
-    function openWaitlistModal() {
-
-        if (!waitlistModal) {
+        if (!iosComingSoonModal) {
             return;
         }
 
-        waitlistModal.classList.add("open");
+        iosComingSoonModal.classList.add("open");
 
-        waitlistModal.setAttribute(
+        iosComingSoonModal.setAttribute(
             "aria-hidden",
             "false"
         );
 
         document.body.style.overflow =
             "hidden";
-
-
-        const nameInput =
-            document.getElementById(
-                "waitlistName"
-            );
-
-        if (nameInput) {
-
-            setTimeout(function () {
-
-                nameInput.focus();
-
-            }, 100);
-
-        }
-
     }
 
+    function closeIosComingSoon() {
 
-    function closeWaitlistModal() {
-
-        if (!waitlistModal) {
+        if (!iosComingSoonModal) {
             return;
         }
 
-        waitlistModal.classList.remove(
+        iosComingSoonModal.classList.remove(
             "open"
         );
 
-        waitlistModal.setAttribute(
+        iosComingSoonModal.setAttribute(
             "aria-hidden",
             "true"
         );
 
         document.body.style.overflow =
             "";
-
-
-        if (waitlistStatus) {
-
-            waitlistStatus.textContent =
-                "";
-
-        }
-
-    }
-
-
-    const iosComingSoonModal = document.getElementById("iosComingSoonModal");
-    const iosComingSoonClose = document.getElementById("iosComingSoonClose");
-
-    function openIosComingSoon() {
-        if (!iosComingSoonModal) return;
-        iosComingSoonModal.classList.add("open");
-        iosComingSoonModal.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
-    }
-
-    function closeIosComingSoon() {
-        if (!iosComingSoonModal) return;
-        iosComingSoonModal.classList.remove("open");
-        iosComingSoonModal.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
     }
 
     if (iosDownloadButton) {
-        iosDownloadButton.addEventListener("click", function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            openIosComingSoon();
-        });
-    }
 
-    if (iosComingSoonClose) iosComingSoonClose.addEventListener("click", closeIosComingSoon);
-    if (iosComingSoonModal) {
-        iosComingSoonModal.querySelectorAll("[data-ios-close]").forEach(function (element) {
-            element.addEventListener("click", closeIosComingSoon);
-        });
-    }
-
-
-    if (waitlistClose) {
-
-        waitlistClose.addEventListener(
+        iosDownloadButton.addEventListener(
             "click",
-            closeWaitlistModal
+            function (event) {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                openIosComingSoon();
+
+            }
         );
 
     }
 
+    if (iosComingSoonClose) {
 
-    if (waitlistModal) {
+        iosComingSoonClose.addEventListener(
+            "click",
+            closeIosComingSoon
+        );
 
-        waitlistModal
-            .querySelectorAll(
-                "[data-waitlist-close]"
-            )
+    }
+
+    if (iosComingSoonModal) {
+
+        iosComingSoonModal
+            .querySelectorAll("[data-ios-close]")
             .forEach(function (element) {
 
                 element.addEventListener(
                     "click",
-                    closeWaitlistModal
+                    closeIosComingSoon
                 );
 
             });
 
     }
-
 
     document.addEventListener(
         "keydown",
@@ -361,215 +371,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (
                 event.key === "Escape" &&
-                waitlistModal &&
-                waitlistModal.classList.contains(
-                    "open"
-                )
+                iosComingSoonModal &&
+                iosComingSoonModal.classList.contains("open")
             ) {
 
-                closeWaitlistModal();
+                closeIosComingSoon();
 
             }
 
         }
     );
-
-
-    if (waitlistForm) {
-
-        waitlistForm.addEventListener(
-            "submit",
-            async function (event) {
-
-                event.preventDefault();
-
-                if (!supabase) {
-
-                    if (waitlistStatus) {
-
-                        waitlistStatus.textContent =
-                            "تعذر الاتصال بالخادم. حاول مرة أخرى.";
-
-                    }
-
-                    return;
-                }
-
-
-                const formData =
-                    new FormData(
-                        waitlistForm
-                    );
-
-
-                const fullName =
-                    String(
-                        formData.get(
-                            "full_name"
-                        ) || ""
-                    ).trim();
-
-
-                const email =
-                    String(
-                        formData.get(
-                            "email"
-                        ) || ""
-                    ).trim();
-
-
-                const phone =
-                    String(
-                        formData.get(
-                            "phone"
-                        ) || ""
-                    ).trim();
-
-
-                const role =
-                    String(
-                        formData.get(
-                            "role"
-                        ) || ""
-                    ).trim();
-
-
-                if (fullName.length < 2) {
-
-                    waitlistStatus.textContent =
-                        "يرجى إدخال اسم صحيح.";
-
-                    return;
-
-                }
-
-
-                if (
-                    !email ||
-                    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
-                        email
-                    )
-                ) {
-
-                    waitlistStatus.textContent =
-                        "يرجى إدخال بريد إلكتروني صحيح.";
-
-                    return;
-
-                }
-
-
-                if (phone.length < 8) {
-
-                    waitlistStatus.textContent =
-                        "يرجى إدخال رقم هاتف صحيح.";
-
-                    return;
-
-                }
-
-
-                if (!role) {
-
-                    waitlistStatus.textContent =
-                        "يرجى اختيار نوع نشاطك.";
-
-                    return;
-
-                }
-
-
-                waitlistSubmit.disabled =
-                    true;
-
-
-                const submitText =
-                    waitlistSubmit.querySelector(
-                        "span"
-                    );
-
-                if (submitText) {
-
-                    submitText.textContent =
-                        "جاري الإرسال...";
-
-                }
-
-
-                waitlistStatus.textContent =
-                    "";
-
-
-                const { error } =
-                    await supabase
-                        .from(
-                            "ios_waitlist_registrations"
-                        )
-                        .insert({
-                            full_name:
-                                fullName,
-
-                            email:
-                                email,
-
-                            phone:
-                                phone,
-
-                            role:
-                                role
-                        });
-
-
-                waitlistSubmit.disabled =
-                    false;
-
-
-                if (submitText) {
-
-                    submitText.textContent =
-                        "إرسال";
-
-                }
-
-
-                if (error) {
-
-                    console.error(
-                        "iOS waitlist registration failed:",
-                        error
-                    );
-
-                    waitlistStatus.textContent =
-                        "حدث خطأ أثناء الإرسال. حاول مرة أخرى.";
-
-                    return;
-
-                }
-
-
-                waitlistForm.reset();
-
-                waitlistStatus.textContent =
-                    "تمت إضافتك إلى قائمة الانتظار";
-
-
-                waitlistStatus.style.color =
-                    "var(--orange)";
-
-
-                setTimeout(
-                    function () {
-
-                        closeWaitlistModal();
-
-                    },
-                    1800
-                );
-
-            }
-        );
-
-    }
 
 
     /* =========================================
