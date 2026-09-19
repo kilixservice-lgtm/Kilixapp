@@ -670,213 +670,73 @@
 
 
     <!-- =========================================
-         IOS WAITLIST MODAL
+         IOS COMING SOON MODAL
     ========================================== -->
 
     <div
         class="waitlist-modal"
-        id="waitlistModal"
+        id="iosComingSoonModal"
         aria-hidden="true"
     >
 
-
         <div
             class="waitlist-backdrop"
-            data-waitlist-close
+            data-ios-close
         ></div>
-
-
 
         <div
             class="waitlist-dialog"
             role="dialog"
             aria-modal="true"
-            aria-labelledby="waitlistTitle"
+            aria-labelledby="iosComingSoonTitle"
         >
-
-
-            <!-- CLOSE -->
 
             <button
                 type="button"
                 class="waitlist-close"
-                id="waitlistClose"
+                id="iosComingSoonClose"
                 aria-label="إغلاق"
             >
-
                 <i
                     class="fa-solid fa-xmark"
                     aria-hidden="true"
                 ></i>
-
             </button>
 
-
-
-            <!-- ICON -->
-
             <div class="waitlist-icon">
-
                 <i
                     class="fa-brands fa-apple"
                     aria-hidden="true"
                 ></i>
-
             </div>
 
-
-
-            <!-- TITLE -->
-
-            <h2 id="waitlistTitle">
-                كن أول من يعرف
+            <h2 id="iosComingSoonTitle">
+                قريباً على App Store
             </h2>
 
-
-
-            <!-- DESCRIPTION -->
-
             <p class="waitlist-description">
-
-                سجّل بياناتك وسنخبرك عند توفر Kilix على App Store.
-
+                تابعنا على إنستغرام وسنعلمك فور إصدار التطبيق.
             </p>
 
-
-
-            <!-- FORM -->
-
-            <form
-                id="waitlistForm"
-                class="waitlist-form"
+            <a
+                class="waitlist-submit"
+                href="https://www.instagram.com/kilixapp?stkn=MTB6eDIyYm13OWhtcg=="
+                target="_blank"
+                rel="noopener noreferrer"
             >
+                <span>
+                    متابعة على Instagram
+                </span>
 
-
-                <!-- NAME -->
-
-                <label for="waitlistName">
-                    الاسم الكامل
-                </label>
-
-                <input
-                    id="waitlistName"
-                    name="full_name"
-                    type="text"
-                    placeholder="أدخل اسمك"
-                    autocomplete="name"
-                    required
-                >
-
-
-
-                <!-- EMAIL -->
-
-                <label for="waitlistEmail">
-                    البريد الإلكتروني
-                </label>
-
-                <input
-                    id="waitlistEmail"
-                    name="email"
-                    type="email"
-                    placeholder="example@email.com"
-                    autocomplete="email"
-                    required
-                >
-
-
-
-                <!-- PHONE -->
-
-                <label for="waitlistPhone">
-                    رقم الهاتف
-                </label>
-
-                <input
-                    id="waitlistPhone"
-                    name="phone"
-                    type="tel"
-                    placeholder="05 XX XX XX XX"
-                    autocomplete="tel"
-                    inputmode="tel"
-                    required
-                >
-
-
-
-                <!-- ROLE -->
-
-                <label for="waitlistRole">
-                    أنت
-                </label>
-
-                <select
-                    id="waitlistRole"
-                    name="role"
-                    required
-                >
-
-                    <option
-                        value=""
-                        selected
-                        disabled
-                    >
-                        اختر نوع نشاطك
-                    </option>
-
-                    <option value="تاجر إلكتروني">
-                        تاجر إلكتروني
-                    </option>
-
-                    <option value="تاجر">
-                        تاجر
-                    </option>
-
-                    <option value="مورد">
-                        مورد
-                    </option>
-
-                </select>
-
-
-
-                <!-- SUBMIT -->
-
-                <button
-                    type="submit"
-                    class="waitlist-submit"
-                    id="waitlistSubmit"
-                >
-
-                    <span>
-                        إرسال
-                    </span>
-
-                    <i
-                        class="fa-solid fa-arrow-left"
-                        aria-hidden="true"
-                    ></i>
-
-                </button>
-
-
-
-                <!-- STATUS -->
-
-                <p
-                    class="waitlist-status"
-                    id="waitlistStatus"
-                    role="status"
-                    aria-live="polite"
-                ></p>
-
-
-            </form>
+                <i
+                    class="fa-brands fa-instagram"
+                    aria-hidden="true"
+                ></i>
+            </a>
 
         </div>
 
     </div>
-
 
 
     <!-- =========================================
