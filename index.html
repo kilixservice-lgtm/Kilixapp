@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +20,13 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css?v=20260918-waitlist">
+
+    <!-- Smooth Scroll -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,7 +34,6 @@
     <!-- =========================================
          BACKGROUND DECORATION
     ========================================== -->
-
     <div class="page-decoration" aria-hidden="true">
         <div class="orange-shape orange-shape-top"></div>
         <div class="orange-line orange-line-1"></div>
@@ -40,9 +45,7 @@
     <!-- =========================================
          NAVBAR
     ========================================== -->
-
     <header class="navbar">
-
         <div class="container nav-container">
 
             <!-- MENU -->
@@ -68,14 +71,17 @@
                     id="menuDropdown"
                 >
 
+                    <!-- تحميل التطبيق -->
                     <a href="#download">
                         <i class="fa-solid fa-mobile-screen-button"></i>
                         <span>تحميل التطبيق</span>
                     </a>
 
+
+                    <!-- اتصل بنا -->
                     <a href="#contact">
                         <i class="fa-solid fa-headset"></i>
-                        <span>تواصل معنا</span>
+                        <span>اتصل بنا</span>
                     </a>
 
                 </div>
@@ -103,22 +109,24 @@
             </a>
 
         </div>
-
     </header>
 
 
     <!-- =========================================
          MAIN
     ========================================== -->
-
     <main>
 
-        <!-- HERO -->
+
+        <!-- =========================================
+             HERO
+        ========================================== -->
         <section class="hero">
 
             <div class="container hero-container">
 
                 <div class="hero-content">
+
 
                     <!-- BADGE -->
                     <div class="badge">
@@ -155,9 +163,11 @@
 
                     <!-- DESCRIPTION -->
                     <p class="hero-description">
+
                         اكتشف المنتجات، قارن أسعار الجملة،
                         تعرّف على الموردين واطلب مباشرة
                         من هاتفك.
+
                     </p>
 
 
@@ -167,11 +177,13 @@
                         id="download"
                     >
 
+
                         <!-- ANDROID -->
                         <a
                             href="#"
                             class="btn btn-primary"
                         >
+
                             <i class="fa-brands fa-android"></i>
 
                             <span>
@@ -179,6 +191,7 @@
                             </span>
 
                             <i class="fa-solid fa-arrow-left btn-arrow"></i>
+
                         </a>
 
 
@@ -190,11 +203,13 @@
                             role="button"
                             aria-label="App Store - يتوفر قريبًا"
                         >
+
                             <i class="fa-brands fa-apple"></i>
 
                             <span>
                                 App Store
                             </span>
+
                         </a>
 
                     </div>
@@ -227,12 +242,12 @@
         <!-- =========================================
              FEATURES
         ========================================== -->
-
         <section class="features">
 
             <div class="container features-container">
 
                 <div class="features-grid">
+
 
                     <!-- FEATURE 1 -->
                     <article class="feature-card">
@@ -293,6 +308,7 @@
 
                     </article>
 
+
                 </div>
 
             </div>
@@ -303,28 +319,30 @@
         <!-- =========================================
              BOTTOM DECORATION
         ========================================== -->
-
         <div
             class="bottom-decoration"
             aria-hidden="true"
         >
+
             <div class="bottom-orange"></div>
+
             <div class="bottom-blue"></div>
+
         </div>
 
     </main>
 
 
     <!-- =========================================
-         FOOTER
+         FOOTER / CONTACT
     ========================================== -->
-
     <footer
         class="site-footer"
         id="contact"
     >
 
         <div class="container footer-container">
+
 
             <!-- FOOTER BRAND -->
             <div class="footer-brand">
@@ -334,7 +352,9 @@
                     class="footer-logo"
                     aria-label="Kilix"
                 >
+
                     <span class="logo-orange">Ki</span><span class="logo-blue">lix</span>
+
                 </a>
 
                 <p>
@@ -347,6 +367,7 @@
             <!-- CONTACT LINKS -->
             <div class="footer-contact">
 
+
                 <!-- FACEBOOK -->
                 <a
                     href="https://www.facebook.com/profile.php?id=61593413597222"
@@ -355,6 +376,7 @@
                     class="footer-link"
                     aria-label="Kilix على Facebook"
                 >
+
                     <span class="footer-icon">
                         <i class="fa-brands fa-facebook-f"></i>
                     </span>
@@ -362,6 +384,7 @@
                     <span>
                         Facebook
                     </span>
+
                 </a>
 
 
@@ -373,6 +396,7 @@
                     class="footer-link"
                     aria-label="Kilix على Instagram"
                 >
+
                     <span class="footer-icon">
                         <i class="fa-brands fa-instagram"></i>
                     </span>
@@ -380,6 +404,7 @@
                     <span>
                         Instagram
                     </span>
+
                 </a>
 
 
@@ -389,6 +414,7 @@
                     class="footer-link"
                     aria-label="التواصل عبر البريد الإلكتروني"
                 >
+
                     <span class="footer-icon">
                         <i class="fa-solid fa-envelope"></i>
                     </span>
@@ -396,7 +422,9 @@
                     <span>
                         kilixservice@gmail.com
                     </span>
+
                 </a>
+
 
             </div>
 
@@ -418,7 +446,7 @@
 
     </footer>
 
-    
+
     <!-- =========================================
          iOS WAITLIST MODAL
     ========================================== -->
@@ -427,7 +455,12 @@
         id="waitlistModal"
         aria-hidden="true"
     >
-        <div class="waitlist-backdrop" data-waitlist-close></div>
+
+        <div
+            class="waitlist-backdrop"
+            data-waitlist-close
+        ></div>
+
 
         <div
             class="waitlist-dialog"
@@ -435,27 +468,55 @@
             aria-modal="true"
             aria-labelledby="waitlistTitle"
         >
+
+
+            <!-- CLOSE -->
             <button
                 type="button"
                 class="waitlist-close"
                 id="waitlistClose"
                 aria-label="إغلاق"
             >
+
                 <i class="fa-solid fa-xmark"></i>
+
             </button>
 
+
+            <!-- ICON -->
             <div class="waitlist-icon">
+
                 <i class="fa-brands fa-apple"></i>
+
             </div>
 
-            <h2 id="waitlistTitle">كن أول من يعرف</h2>
 
+            <!-- TITLE -->
+            <h2 id="waitlistTitle">
+                كن أول من يعرف
+            </h2>
+
+
+            <!-- DESCRIPTION -->
             <p class="waitlist-description">
+
                 سجّل بياناتك وسنخبرك عند توفر Kilix على App Store.
+
             </p>
 
-            <form id="waitlistForm" class="waitlist-form">
-                <label for="waitlistName">الاسم الكامل</label>
+
+            <!-- FORM -->
+            <form
+                id="waitlistForm"
+                class="waitlist-form"
+            >
+
+
+                <!-- NAME -->
+                <label for="waitlistName">
+                    الاسم الكامل
+                </label>
+
                 <input
                     id="waitlistName"
                     name="full_name"
@@ -465,7 +526,12 @@
                     required
                 >
 
-                <label for="waitlistEmail">البريد الإلكتروني</label>
+
+                <!-- EMAIL -->
+                <label for="waitlistEmail">
+                    البريد الإلكتروني
+                </label>
+
                 <input
                     id="waitlistEmail"
                     name="email"
@@ -475,7 +541,12 @@
                     required
                 >
 
-                <label for="waitlistPhone">رقم الهاتف</label>
+
+                <!-- PHONE -->
+                <label for="waitlistPhone">
+                    رقم الهاتف
+                </label>
+
                 <input
                     id="waitlistPhone"
                     name="phone"
@@ -486,35 +557,70 @@
                     required
                 >
 
-                <label for="waitlistRole">أنت</label>
+
+                <!-- ROLE -->
+                <label for="waitlistRole">
+                    أنت
+                </label>
+
                 <select
                     id="waitlistRole"
                     name="role"
                     required
                 >
-                    <option value="" selected disabled>اختر نوع نشاطك</option>
-                    <option value="تاجر إلكتروني">تاجر إلكتروني</option>
-                    <option value="تاجر">تاجر</option>
-                    <option value="مورد">مورد</option>
+
+                    <option
+                        value=""
+                        selected
+                        disabled
+                    >
+                        اختر نوع نشاطك
+                    </option>
+
+                    <option value="تاجر إلكتروني">
+                        تاجر إلكتروني
+                    </option>
+
+                    <option value="تاجر">
+                        تاجر
+                    </option>
+
+                    <option value="مورد">
+                        مورد
+                    </option>
+
                 </select>
 
+
+                <!-- SUBMIT -->
                 <button
                     type="submit"
                     class="waitlist-submit"
                     id="waitlistSubmit"
                 >
-                    <span>إرسال</span>
+
+                    <span>
+                        إرسال
+                    </span>
+
                     <i class="fa-solid fa-arrow-left"></i>
+
                 </button>
 
+
+                <!-- STATUS -->
                 <p
                     class="waitlist-status"
                     id="waitlistStatus"
                     role="status"
                     aria-live="polite"
                 ></p>
+
+
             </form>
+
         </div>
+
     </div>
 
 
@@ -523,8 +629,8 @@
     ========================================== -->
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script src="script.js?v=20260918-waitlist"></script>
 
 </body>
 </html>
-
