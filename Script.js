@@ -294,20 +294,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    const iosComingSoonModal = document.getElementById("iosComingSoonModal");
+    const iosComingSoonClose = document.getElementById("iosComingSoonClose");
+
+    function openIosComingSoon() {
+        if (!iosComingSoonModal) return;
+        iosComingSoonModal.classList.add("open");
+        iosComingSoonModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeIosComingSoon() {
+        if (!iosComingSoonModal) return;
+        iosComingSoonModal.classList.remove("open");
+        iosComingSoonModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+    }
+
     if (iosDownloadButton) {
+        iosDownloadButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            openIosComingSoon();
+        });
+    }
 
-        iosDownloadButton.addEventListener(
-            "click",
-            function (event) {
-
-                event.preventDefault();
-                event.stopPropagation();
-
-                openWaitlistModal();
-
-            }
-        );
-
+    if (iosComingSoonClose) iosComingSoonClose.addEventListener("click", closeIosComingSoon);
+    if (iosComingSoonModal) {
+        iosComingSoonModal.querySelectorAll("[data-ios-close]").forEach(function (element) {
+            element.addEventListener("click", closeIosComingSoon);
+        });
     }
 
 
