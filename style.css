@@ -1,0 +1,2137 @@
+/* =========================================================
+   KILIX — LANDING PAGE
+   Navy + Orange + Off White
+   Arabic RTL / Fully Responsive
+   ========================================================= */
+
+
+/* =========================================================
+   01. VARIABLES
+   ========================================================= */
+
+:root {
+    --orange: #ff6500;
+    --orange-dark: #e95400;
+    --orange-soft: #fff0e6;
+
+    --navy: #18375c;
+    --navy-dark: #102e50;
+    --navy-soft: #eaf0f6;
+
+    --background: #fffaf7;
+    --white: #ffffff;
+
+    --text: #18375c;
+    --muted: #6b7a8d;
+
+    --border: rgba(24, 55, 92, 0.10);
+
+    --shadow-button: 0 12px 28px rgba(255, 101, 0, 0.24);
+    --shadow-soft: 0 10px 30px rgba(24, 55, 92, 0.08);
+
+    --radius-pill: 999px;
+
+    --transition: 0.35s cubic-bezier(.16, 1, .3, 1);
+}
+
+
+/* =========================================================
+   02. RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Tajawal", sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 90% 12%,
+            rgba(255, 101, 0, 0.045),
+            transparent 28%
+        ),
+        var(--background);
+
+    color: var(--text);
+    direction: rtl;
+
+    overflow-x: hidden;
+
+    line-height: 1.6;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+body,
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.container {
+    width: min(calc(100% - 40px), 1180px);
+    margin-inline: auto;
+}
+
+
+/* =========================================================
+   03. BACKGROUND DECORATION
+   ========================================================= */
+
+.page-decoration {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: -1;
+}
+
+.orange-shape {
+    position: absolute;
+    background: var(--orange);
+    opacity: 0.09;
+}
+
+.orange-shape-top {
+    width: 390px;
+    height: 260px;
+
+    top: -205px;
+    right: -120px;
+
+    border-radius: 50%;
+}
+
+.orange-shape-side {
+    width: 180px;
+    height: 520px;
+
+    right: -130px;
+    top: 38%;
+
+    border-radius: 100px 0 0 100px;
+
+    transform: rotate(-18deg);
+}
+
+.orange-line {
+    position: absolute;
+
+    width: 55px;
+    height: 8px;
+
+    background: var(--orange);
+
+    border-radius: var(--radius-pill);
+
+    opacity: 0.85;
+
+    transform: rotate(-35deg);
+}
+
+.orange-line-1 {
+    top: 145px;
+    right: 7%;
+}
+
+.orange-line-2 {
+    top: 168px;
+    right: 4.5%;
+
+    width: 30px;
+}
+
+
+/* =========================================================
+   04. NAVBAR
+   ========================================================= */
+
+.navbar {
+    position: sticky;
+
+    top: 0;
+
+    width: 100%;
+
+    /*
+       مهم:
+       نخلي الـNavbar فوق كل عناصر الصفحة
+    */
+    z-index: 10000;
+
+    background:
+        rgba(255, 250, 247, 0.94);
+
+    border-bottom:
+        1px solid rgba(24, 55, 92, 0.06);
+
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
+}
+
+.nav-container {
+    width: min(
+        calc(100% - 40px),
+        1180px
+    );
+
+    min-height: 82px;
+
+    margin-inline: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr auto 1fr;
+
+    align-items: center;
+
+    /*
+       تأكيد اتجاه RTL داخل الـGrid
+    */
+    direction: rtl;
+
+    position: relative;
+
+    z-index: 10001;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo {
+    grid-column: 2;
+
+    font-size: 2.55rem;
+
+    line-height: 1;
+
+    font-weight: 900;
+
+    letter-spacing: -1.5px;
+
+    white-space: nowrap;
+
+    transition:
+        transform var(--transition);
+
+    position: relative;
+
+    z-index: 10002;
+}
+
+.logo:hover {
+    transform: scale(1.03);
+}
+
+.logo-orange {
+    color: var(--orange);
+}
+
+.logo-blue {
+    color: var(--navy);
+}
+
+
+/* =========================================================
+   MENU WRAPPER
+   ========================================================= */
+
+.menu-wrapper {
+
+    /*
+       في RTL:
+       grid-column: 1 = الجهة اليمنى
+    */
+    grid-column: 1;
+
+    justify-self: start;
+
+    position: relative;
+
+    /*
+       أعلى من كل شيء داخل الـNavbar
+    */
+    z-index: 10010;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   MENU BUTTON
+   ========================================================= */
+
+.menu-toggle {
+
+    position: relative;
+
+    width: 48px;
+    height: 48px;
+
+    border: 0;
+
+    background: transparent;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 10px;
+
+    margin: 0;
+
+    color: var(--navy);
+
+    /*
+       مهم جدًا للضغط
+    */
+    cursor: pointer;
+
+    pointer-events: auto;
+
+    touch-action: manipulation;
+
+    z-index: 10020;
+
+    transition:
+        transform var(--transition);
+}
+
+.menu-toggle:hover {
+    transform: scale(1.04);
+}
+
+.menu-toggle:active {
+    transform: scale(0.95);
+}
+
+.menu-toggle span {
+
+    display: block;
+
+    width: 28px;
+    height: 3px;
+
+    background: var(--navy);
+
+    border-radius: 10px;
+
+    pointer-events: none;
+
+    transition:
+        transform var(--transition),
+        opacity var(--transition),
+        background var(--transition);
+}
+
+
+/* =========================================================
+   X WHEN OPEN
+   ========================================================= */
+
+.menu-toggle.active span:nth-child(1) {
+
+    transform:
+        translateY(9px)
+        rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+
+    transform:
+        translateY(-9px)
+        rotate(-45deg);
+}
+
+
+/* =========================================================
+   MENU DROPDOWN
+   ========================================================= */
+
+.menu-dropdown {
+
+    position: absolute;
+
+    top: calc(100% + 12px);
+
+    /*
+       في RTL، القائمة تبدأ من جهة اليمين
+    */
+    right: 0;
+
+    width: 215px;
+
+    padding: 8px;
+
+    background: var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 18px 45px rgba(16, 46, 80, 0.16);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        translateY(-10px)
+        scale(0.96);
+
+    transform-origin: top right;
+
+    z-index: 10030;
+
+    transition:
+        opacity var(--transition),
+        visibility var(--transition),
+        transform var(--transition);
+}
+
+
+/* =========================================================
+   MENU OPEN
+   ========================================================= */
+
+.menu-wrapper.open .menu-dropdown {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =========================================================
+   MENU LINKS
+   ========================================================= */
+
+.menu-dropdown a {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    min-height: 52px;
+
+    padding: 10px 14px;
+
+    border-radius: 12px;
+
+    color: var(--navy);
+
+    font-size: 0.92rem;
+
+    font-weight: 800;
+
+    transition:
+        background var(--transition),
+        color var(--transition),
+        transform var(--transition);
+}
+
+.menu-dropdown a:hover {
+
+    background:
+        var(--orange-soft);
+
+    color:
+        var(--orange);
+
+    transform:
+        translateX(-3px);
+}
+
+.menu-dropdown a i {
+
+    width: 22px;
+
+    text-align: center;
+
+    color: var(--orange);
+
+    font-size: 1rem;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   NAV DOWNLOAD BUTTON
+   ========================================================= */
+
+.btn-download-nav {
+
+    grid-column: 3;
+
+    justify-self: end;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 12px 22px;
+
+    min-width: 150px;
+
+    border-radius:
+        var(--radius-pill);
+
+    background:
+        var(--orange);
+
+    color:
+        var(--white);
+
+    font-size:
+        0.95rem;
+
+    font-weight:
+        800;
+
+    white-space:
+        nowrap;
+
+    position: relative;
+
+    z-index: 10002;
+
+    box-shadow:
+        0 8px 20px rgba(255, 101, 0, 0.18);
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
+}
+
+.btn-download-nav:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        var(--orange-dark);
+
+    box-shadow:
+        0 12px 25px rgba(255, 101, 0, 0.25);
+}
+
+
+/* =========================================================
+   05. HERO
+   ========================================================= */
+
+.hero {
+
+    position: relative;
+
+    padding:
+        55px 0 35px;
+
+    min-height:
+        calc(100vh - 82px);
+
+    display: flex;
+
+    align-items: center;
+}
+
+.hero-container {
+
+    width:
+        min(
+            calc(100% - 40px),
+            1180px
+        );
+
+    margin-inline: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.hero-content {
+
+    direction: rtl;
+
+    position: relative;
+
+    z-index: 5;
+
+    width: 100%;
+
+    max-width: 610px;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   BADGE
+   ========================================================= */
+
+.badge {
+
+    width: fit-content;
+
+    max-width: 100%;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    padding:
+        9px 17px;
+
+    margin-bottom:
+        22px;
+
+    border-radius:
+        var(--radius-pill);
+
+    background:
+        var(--orange-soft);
+
+    color:
+        var(--orange);
+
+    font-size:
+        0.9rem;
+
+    font-weight:
+        800;
+
+    line-height:
+        1.5;
+}
+
+.badge i {
+    font-size: 0.95rem;
+}
+
+
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
+
+.hero-title {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    width: 100%;
+
+    max-width: 620px;
+
+    margin: 0 0 8px;
+
+    padding: 0;
+
+    color: var(--navy);
+
+    font-size:
+        clamp(
+            3rem,
+            5vw,
+            4.5rem
+        );
+
+    font-weight: 900;
+
+    line-height: 1.12;
+
+    letter-spacing: -1.5px;
+
+    text-align: right;
+
+    direction: rtl;
+}
+
+.hero-title .title-line {
+
+    display: block;
+
+    width: auto;
+
+    margin: 0;
+
+    padding: 0;
+
+    white-space: nowrap;
+
+    word-break: keep-all;
+
+    overflow: visible;
+}
+
+.hero-title .title-line:first-child {
+    color: var(--navy);
+}
+
+.hero-title .highlight {
+    color: var(--orange);
+}
+
+
+/* =========================================================
+   UNDERLINE
+   ========================================================= */
+
+.title-underline {
+
+    width: 145px;
+
+    height: 12px;
+
+    margin:
+        2px 0 23px auto;
+
+    border-bottom:
+        5px solid var(--orange);
+
+    border-radius: 50%;
+
+    transform:
+        rotate(-3deg);
+
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.hero-description {
+
+    width: 100%;
+
+    max-width: 535px;
+
+    margin-bottom: 30px;
+
+    color: var(--muted);
+
+    font-size: 1.12rem;
+
+    font-weight: 500;
+
+    line-height: 1.85;
+}
+
+
+/* =========================================================
+   06. CTA
+   ========================================================= */
+
+.cta-buttons {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    width:
+        min(
+            100%,
+            390px
+        );
+
+    margin-bottom: 14px;
+}
+
+.btn {
+
+    min-height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    padding: 13px 23px;
+
+    border-radius:
+        var(--radius-pill);
+
+    font-size: 1rem;
+
+    font-weight: 800;
+
+    border:
+        1px solid transparent;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
+}
+
+.btn-primary {
+
+    color: var(--white);
+
+    background: var(--orange);
+
+    box-shadow: var(--shadow-button);
+}
+
+.btn-primary:hover {
+
+    background:
+        var(--orange-dark);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 16px 32px rgba(255, 101, 0, 0.28);
+}
+
+.btn-primary .fa-android {
+    font-size: 1.3rem;
+}
+
+.btn-arrow {
+
+    margin-right: auto;
+
+    font-size: 0.85rem;
+}
+
+.btn-secondary {
+
+    color: var(--navy);
+
+    background: var(--white);
+
+    border-color:
+        rgba(24, 55, 92, 0.15);
+
+    box-shadow:
+        var(--shadow-soft);
+}
+
+.btn-secondary:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(24, 55, 92, 0.22);
+
+    box-shadow:
+        0 15px 30px rgba(24, 55, 92, 0.10);
+}
+
+.btn-secondary .fa-apple {
+    font-size: 1.3rem;
+}
+
+
+/* =========================================================
+   PLATFORM
+   ========================================================= */
+
+.platform-availability {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding-right: 4px;
+
+    font-size: 0.86rem;
+
+    font-weight: 700;
+
+    color: var(--navy);
+}
+
+.platform-availability .divider {
+    color: #ccd4dd;
+}
+
+.platform-availability .muted {
+
+    color: #8995a3;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   07. FEATURES
+   ========================================================= */
+
+.features {
+
+    position: relative;
+
+    padding:
+        35px 0 70px;
+}
+
+.features-container {
+
+    width:
+        min(
+            calc(100% - 40px),
+            1180px
+        );
+
+    margin-inline: auto;
+}
+
+.features-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+
+    align-items: stretch;
+}
+
+.feature-card {
+
+    min-height: 175px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 25px 15px;
+
+    background:
+        rgba(255, 255, 255, 0.78);
+
+    border:
+        1px solid rgba(24, 55, 92, 0.07);
+
+    border-radius: 22px;
+
+    box-shadow:
+        var(--shadow-soft);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
+}
+
+.feature-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(255, 101, 0, 0.18);
+
+    box-shadow:
+        0 18px 40px rgba(24, 55, 92, 0.11);
+}
+
+
+/* =========================================================
+   FEATURE ICON
+   ========================================================= */
+
+.icon-wrapper {
+
+    width: 64px;
+
+    height: 64px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 15px;
+
+    border-radius: 50%;
+
+    background:
+        var(--orange-soft);
+
+    color:
+        var(--orange);
+
+    font-size: 1.45rem;
+
+    transition:
+        transform var(--transition),
+        background var(--transition);
+}
+
+.feature-card:hover .icon-wrapper {
+
+    transform:
+        scale(1.08);
+
+    background:
+        var(--orange);
+
+    color:
+        var(--white);
+}
+
+.feature-card h3 {
+
+    color:
+        var(--navy);
+
+    font-size:
+        0.98rem;
+
+    font-weight:
+        800;
+
+    line-height:
+        1.65;
+}
+
+
+/* =========================================================
+   08. BOTTOM DECORATION
+   ========================================================= */
+
+.bottom-decoration {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 110px;
+
+    overflow: hidden;
+
+    margin-top: 5px;
+}
+
+.bottom-orange {
+
+    position: absolute;
+
+    width: 120%;
+
+    height: 120px;
+
+    left: -10%;
+
+    bottom: -75px;
+
+    background:
+        var(--orange);
+
+    border-radius:
+        50% 50% 0 0 / 55% 55% 0 0;
+
+    transform:
+        rotate(-2deg);
+
+    opacity: 0.95;
+}
+
+.bottom-blue {
+
+    position: absolute;
+
+    width: 120%;
+
+    height: 115px;
+
+    left: -10%;
+
+    bottom: -105px;
+
+    background:
+        var(--navy-dark);
+
+    border-radius:
+        50% 50% 0 0 / 55% 55% 0 0;
+
+    transform:
+        rotate(1deg);
+}
+
+
+/* =========================================================
+   09. FOOTER
+   ========================================================= */
+
+.site-footer {
+
+    position: relative;
+
+    background:
+        var(--navy-dark);
+
+    color:
+        var(--white);
+
+    padding-top:
+        55px;
+
+    overflow:
+        hidden;
+}
+
+.footer-container {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 40px;
+
+    padding-top: 10px;
+
+    padding-bottom: 50px;
+}
+
+.footer-brand {
+
+    text-align: right;
+}
+
+.footer-logo {
+
+    display: inline-block;
+
+    font-size: 2.2rem;
+
+    line-height: 1;
+
+    font-weight: 900;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 10px;
+
+    text-decoration: none;
+
+    transition:
+        transform var(--transition);
+}
+
+.footer-logo:hover {
+
+    transform:
+        scale(1.03);
+}
+
+.footer-brand p {
+
+    margin: 0;
+
+    color:
+        rgba(255, 255, 255, 0.68);
+
+    font-size:
+        0.95rem;
+
+    font-weight:
+        500;
+}
+
+
+/* =========================================================
+   FOOTER CONTACT
+   ========================================================= */
+
+.footer-contact {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.footer-link {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-height: 50px;
+
+    padding: 8px 15px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 14px;
+
+    color:
+        var(--white);
+
+    text-decoration: none;
+
+    font-size:
+        0.9rem;
+
+    font-weight:
+        700;
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition);
+}
+
+.footer-link:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(255, 101, 0, 0.12);
+
+    border-color:
+        rgba(255, 101, 0, 0.45);
+}
+
+.footer-icon {
+
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background:
+        var(--orange);
+
+    color:
+        var(--white);
+
+    font-size:
+        0.95rem;
+
+    transition:
+        transform var(--transition);
+}
+
+.footer-link:hover .footer-icon {
+
+    transform:
+        scale(1.08);
+}
+
+
+/* =========================================================
+   FOOTER BOTTOM
+   ========================================================= */
+
+.footer-bottom {
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.09);
+
+    padding:
+        18px 0;
+
+    text-align:
+        center;
+}
+
+.footer-bottom p {
+
+    margin: 0;
+
+    color:
+        rgba(255, 255, 255, 0.48);
+
+    font-size:
+        0.78rem;
+
+    font-weight:
+        500;
+}
+
+
+/* =========================================================
+   10. SCROLL REVEAL
+   ========================================================= */
+
+.reveal-element {
+
+    opacity: 0;
+
+    transform:
+        translateY(24px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.reveal-element.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   11. TABLET
+   ========================================================= */
+
+@media (max-width: 992px) {
+
+    .nav-container {
+
+        min-height: 74px;
+    }
+
+    .hero {
+
+        min-height: auto;
+
+        padding:
+            65px 0 45px;
+    }
+
+    .hero-container {
+
+        width:
+            min(
+                calc(100% - 40px),
+                720px
+            );
+    }
+
+    .hero-content {
+
+        max-width: 650px;
+
+        margin-inline: auto;
+
+        text-align: center;
+    }
+
+    .badge {
+
+        margin-inline: auto;
+    }
+
+    .hero-title {
+
+        align-items: center;
+
+        margin-inline: auto;
+
+        text-align: center;
+    }
+
+    .title-underline {
+
+        margin:
+            2px auto 23px;
+    }
+
+    .hero-description {
+
+        margin-inline: auto;
+    }
+
+    .cta-buttons {
+
+        margin-inline: auto;
+    }
+
+    .platform-availability {
+
+        justify-content: center;
+
+        padding-right: 0;
+    }
+
+    .features-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .footer-container {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        text-align: center;
+
+        gap: 28px;
+    }
+
+    .footer-brand {
+
+        text-align: center;
+    }
+
+    .footer-contact {
+
+        justify-content: center;
+    }
+}
+
+
+/* =========================================================
+   12. MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .container {
+
+        width:
+            calc(100% - 32px);
+    }
+
+
+    /* NAVBAR */
+
+    .nav-container {
+
+        width:
+            calc(100% - 24px);
+
+        min-height: 68px;
+    }
+
+    .logo {
+
+        font-size:
+            2.15rem;
+    }
+
+    .menu-toggle {
+
+        width: 44px;
+
+        height: 44px;
+    }
+
+    .menu-toggle span {
+
+        width: 25px;
+
+        height: 3px;
+    }
+
+    .btn-download-nav {
+
+        min-width: auto;
+
+        padding:
+            10px 13px;
+
+        gap: 6px;
+
+        font-size:
+            0.78rem;
+    }
+
+    .btn-download-nav i {
+
+        font-size:
+            0.8rem;
+    }
+
+
+    /* MENU */
+
+    .menu-dropdown {
+
+        width: 195px;
+
+        top:
+            calc(100% + 9px);
+
+        right: -4px;
+
+        border-radius:
+            16px;
+    }
+
+    .menu-dropdown a {
+
+        min-height:
+            50px;
+
+        padding:
+            9px 12px;
+
+        font-size:
+            0.88rem;
+    }
+
+
+    /* HERO */
+
+    .hero {
+
+        padding:
+            48px 0 30px;
+    }
+
+    .hero-container {
+
+        width:
+            calc(100% - 32px);
+    }
+
+    .badge {
+
+        padding:
+            8px 13px;
+
+        gap: 7px;
+
+        font-size:
+            0.78rem;
+
+        margin-bottom:
+            19px;
+    }
+
+    .hero-title {
+
+        font-size:
+            clamp(
+                2.55rem,
+                13vw,
+                3.5rem
+            );
+
+        letter-spacing:
+            -1px;
+    }
+
+    .title-underline {
+
+        width:
+            115px;
+
+        height:
+            10px;
+
+        border-bottom-width:
+            4px;
+
+        margin-bottom:
+            20px;
+    }
+
+    .hero-description {
+
+        font-size:
+            0.98rem;
+
+        line-height:
+            1.8;
+
+        margin-bottom:
+            25px;
+    }
+
+    .cta-buttons {
+
+        width:
+            100%;
+
+        max-width:
+            360px;
+    }
+
+    .btn {
+
+        min-height:
+            54px;
+
+        padding:
+            12px 18px;
+
+        font-size:
+            0.92rem;
+    }
+
+    .platform-availability {
+
+        font-size:
+            0.78rem;
+    }
+
+
+    /* FEATURES */
+
+    .features {
+
+        padding:
+            25px 0 50px;
+    }
+
+    .features-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            12px;
+    }
+
+    .feature-card {
+
+        min-height:
+            155px;
+
+        padding:
+            20px 9px;
+
+        border-radius:
+            18px;
+    }
+
+    .icon-wrapper {
+
+        width:
+            55px;
+
+        height:
+            55px;
+
+        margin-bottom:
+            12px;
+
+        font-size:
+            1.2rem;
+    }
+
+    .feature-card h3 {
+
+        font-size:
+            0.82rem;
+
+        line-height:
+            1.55;
+    }
+
+
+    /* BOTTOM */
+
+    .bottom-decoration {
+
+        height:
+            85px;
+    }
+
+    .bottom-orange {
+
+        height:
+            95px;
+
+        bottom:
+            -65px;
+    }
+
+    .bottom-blue {
+
+        height:
+            90px;
+
+        bottom:
+            -82px;
+    }
+
+
+    /* FOOTER */
+
+    .site-footer {
+
+        padding-top:
+            42px;
+    }
+
+    .footer-container {
+
+        width:
+            calc(100% - 32px);
+
+        padding-bottom:
+            38px;
+
+        gap:
+            25px;
+    }
+
+    .footer-logo {
+
+        font-size:
+            2rem;
+    }
+
+    .footer-brand p {
+
+        font-size:
+            0.88rem;
+    }
+
+    .footer-contact {
+
+        width:
+            100%;
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+        gap:
+            10px;
+    }
+
+    .footer-link {
+
+        width:
+            100%;
+
+        justify-content:
+            center;
+
+        min-height:
+            50px;
+    }
+}
+
+
+/* =========================================================
+   13. VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .nav-container {
+
+        width:
+            calc(100% - 20px);
+    }
+
+    .logo {
+
+        font-size:
+            1.95rem;
+    }
+
+    .btn-download-nav {
+
+        padding:
+            9px 10px;
+
+        font-size:
+            0.72rem;
+    }
+
+    .menu-toggle {
+
+        width:
+            42px;
+
+        height:
+            42px;
+    }
+
+    .hero-title {
+
+        font-size:
+            2.45rem;
+    }
+
+    .features-grid {
+
+        gap:
+            9px;
+    }
+
+    .feature-card {
+
+        min-height:
+            145px;
+
+        padding:
+            17px 6px;
+    }
+
+    .feature-card h3 {
+
+        font-size:
+            0.76rem;
+    }
+
+    .footer-container {
+
+        width:
+            calc(100% - 24px);
+    }
+
+    .footer-link {
+
+        font-size:
+            0.82rem;
+    }
+
+    .footer-icon {
+
+        width:
+            33px;
+
+        height:
+            33px;
+    }
+}
+
+
+/* =========================================================
+   14. REDUCE MOTION
+   ========================================================= */
+
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+
+    animation-duration:
+        0.01ms !important;
+
+    animation-iteration-count:
+        1 !important;
+
+    transition-duration:
+        0.01ms !important;
+
+    scroll-behavior:
+        auto !important;
+}
+
+
+/* =========================================================
+   15. FOCUS
+   ========================================================= */
+
+.menu-toggle:focus-visible,
+.btn-download-nav:focus-visible,
+.btn:focus-visible,
+.menu-dropdown a:focus-visible,
+.footer-link:focus-visible,
+.logo:focus-visible,
+.footer-logo:focus-visible {
+
+    outline:
+        3px solid rgba(255, 101, 0, 0.35);
+
+    outline-offset:
+        3px;
+}
+
+
+/* =========================================================
+   16. iOS WAITLIST MODAL
+   ========================================================= */
+
+.waitlist-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 20000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity var(--transition), visibility var(--transition);
+}
+
+.waitlist-modal.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.waitlist-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(16, 46, 80, 0.58);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.waitlist-dialog {
+    position: relative;
+    width: min(100%, 460px);
+    max-height: min(92vh, 720px);
+    overflow-y: auto;
+    padding: 32px 28px 28px;
+    background: var(--white);
+    border: 1px solid rgba(24, 55, 92, 0.08);
+    border-radius: 26px;
+    box-shadow: 0 25px 70px rgba(16, 46, 80, 0.24);
+    transform: translateY(18px) scale(0.97);
+    transition: transform var(--transition);
+}
+
+.waitlist-modal.open .waitlist-dialog {
+    transform: translateY(0) scale(1);
+}
+
+.waitlist-close {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--navy-soft);
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.waitlist-icon {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 15px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--orange-soft);
+    color: var(--orange);
+    font-size: 1.65rem;
+}
+
+.waitlist-dialog h2 {
+    margin: 0 0 8px;
+    text-align: center;
+    color: var(--navy);
+    font-size: 1.65rem;
+    font-weight: 900;
+}
+
+.waitlist-description {
+    margin: 0 auto 22px;
+    max-width: 350px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+
+.waitlist-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.waitlist-form label {
+    color: var(--navy);
+    font-size: 0.88rem;
+    font-weight: 800;
+    margin-top: 4px;
+}
+
+.waitlist-form input,
+.waitlist-form select {
+    width: 100%;
+    min-height: 50px;
+    padding: 11px 14px;
+    border: 1px solid rgba(24, 55, 92, 0.14);
+    border-radius: 13px;
+    background: #fff;
+    color: var(--navy);
+    font-family: inherit;
+    font-size: 0.92rem;
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.waitlist-form input:focus,
+.waitlist-form select:focus {
+    border-color: rgba(255, 101, 0, 0.55);
+    box-shadow: 0 0 0 4px rgba(255, 101, 0, 0.10);
+}
+
+.waitlist-form select {
+    cursor: pointer;
+    appearance: auto;
+}
+
+.waitlist-submit {
+    min-height: 54px;
+    margin-top: 10px;
+    padding: 12px 18px;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--orange);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: inherit;
+    font-size: 0.98rem;
+    font-weight: 900;
+    box-shadow: var(--shadow-button);
+    transition: transform var(--transition), background var(--transition);
+}
+
+.waitlist-submit:hover {
+    background: var(--orange-dark);
+    transform: translateY(-2px);
+}
+
+.waitlist-submit:disabled {
+    opacity: 0.7;
+    cursor: wait;
+    transform: none;
+}
+
+.waitlist-status {
+    min-height: 22px;
+    margin: 4px 0 0;
+    text-align: center;
+    font-size: 0.86rem;
+    font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    .waitlist-modal {
+        padding: 14px;
+    }
+
+    .waitlist-dialog {
+        padding: 30px 20px 22px;
+        border-radius: 22px;
+    }
+
+    .waitlist-dialog h2 {
+        font-size: 1.45rem;
+    }
+}
+
