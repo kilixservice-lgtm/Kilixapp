@@ -196,8 +196,52 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================
-       IOS BUTTON REMOVED — WEB BUTTON USES DIRECT LINK
+       IOS COMING SOON MODAL
     ========================================== */
+
+    const iosDownloadButton =
+        document.getElementById("iosDownloadButton");
+
+    const iosComingSoonModal =
+        document.getElementById("iosComingSoonModal");
+
+    const iosComingSoonClose =
+        document.getElementById("iosComingSoonClose");
+
+    function openIosComingSoon() {
+        if (!iosComingSoonModal) return;
+        iosComingSoonModal.classList.add("open");
+        iosComingSoonModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeIosComingSoon() {
+        if (!iosComingSoonModal) return;
+        iosComingSoonModal.classList.remove("open");
+        iosComingSoonModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+    }
+
+    if (iosDownloadButton) {
+        iosDownloadButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            openIosComingSoon();
+        });
+    }
+
+    if (iosComingSoonClose) {
+        iosComingSoonClose.addEventListener("click", closeIosComingSoon);
+    }
+
+    if (iosComingSoonModal) {
+        iosComingSoonModal.addEventListener("click", function (event) {
+            if (event.target.matches("[data-ios-close]")) {
+                closeIosComingSoon();
+            }
+        });
+    }
+
 
     /* =========================================
        3. SMOOTH SCROLL
