@@ -851,28 +851,22 @@ img {
 }
 
 .btn-web {
-
     color: var(--navy);
-
     background: #eeeeee;
-
     box-shadow: var(--shadow-soft);
 }
 
 .btn-web:hover {
-
     background: #e2e2e2;
-
     transform: translateY(-3px);
-
     box-shadow: 0 15px 30px rgba(24, 55, 92, 0.18);
 }
 
-.btn-web .fa-globe {
-
-    font-size: 1.15rem;
+.btn-web .btn-arrow {
+    margin-right: auto;
+    margin-left: 0;
+    font-size: 0.85rem;
 }
-
 
 .btn-primary {
 
