@@ -852,12 +852,12 @@ img {
 
 .btn-web {
     color: var(--navy);
-    background: #e6e6e6;
+    background: #eaeaea;
     box-shadow: var(--shadow-soft);
 }
 
 .btn-web:hover {
-    background: #dcdcdc;
+    background: #e2e2e2;
     transform: translateY(-3px);
     box-shadow: 0 15px 30px rgba(24, 55, 92, 0.18);
 }
