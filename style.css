@@ -850,6 +850,30 @@ img {
         background var(--transition);
 }
 
+.btn-web {
+
+    color: var(--white);
+
+    background: var(--navy);
+
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-web:hover {
+
+    background: var(--navy-dark);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 15px 30px rgba(24, 55, 92, 0.18);
+}
+
+.btn-web .fa-globe {
+
+    font-size: 1.15rem;
+}
+
+
 .btn-primary {
 
     color: var(--white);
