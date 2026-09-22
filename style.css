@@ -862,9 +862,15 @@ img {
     box-shadow: 0 15px 30px rgba(24, 55, 92, 0.18);
 }
 
+.btn-web {
+    position: relative;
+}
+
 .btn-web .btn-arrow {
-    margin-right: auto;
-    margin-left: 0;
+    position: absolute;
+    left: 23px;
+    right: auto;
+    margin: 0;
     font-size: 0.85rem;
 }
 
