@@ -852,16 +852,16 @@ img {
 
 .btn-web {
 
-    color: var(--white);
+    color: var(--navy);
 
-    background: var(--navy);
+    background: #eeeeee;
 
     box-shadow: var(--shadow-soft);
 }
 
 .btn-web:hover {
 
-    background: var(--navy-dark);
+    background: #e2e2e2;
 
     transform: translateY(-3px);
 
