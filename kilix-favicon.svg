@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
+<rect width="150" height="150" rx="2" fill="#ff4b00"/>
+<g fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+<path d="M47 48c0-14 8-22 18-22s18 8 18 22"/>
+<path d="M34 61c-7 17-4 28 10 29 20 2 45-16 64-29"/>
+<path d="M43 62c-7 18 1 28 15 25 15-3 28-16 40-28"/>
+<path d="M72 53l-25 41"/>
+<path d="M72 53l30 8"/>
+<path d="M76 72l24 22"/>
+</g>
+<text x="75" y="130" text-anchor="middle" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#fff">kilix</text>
+</svg>
